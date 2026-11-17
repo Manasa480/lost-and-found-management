@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Lost Item</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #263238;
+        }
+
+        header {
+            background: #2457a6;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 18px #00000012;
+        }
+
+        h2 {
+            text-align: center;
+            color: #2457a6;
+        }
+
+        p {
+            text-align: center;
+            color: #64748b;
+        }
+
+        label {
+            display: block;
+            margin-top: 16px;
+            font-weight: bold;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-top: 7px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            background: #2457a6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #173f80;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h3>Lost & Found System</h3>
+    <a href="/dashboard">Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <h2>Report a Lost Item</h2>
+    <p>Enter the details of the item you have lost.</p>
+
+    <form action="/report-lost" method="POST" enctype="multipart/form-data">
+
+        <label>Item Name</label>
+        <input type="text" name="itemName"
+               placeholder="Example: Mobile Phone" required>
+
+        <label>Category</label>
+        <select name="category" required>
+            <option value="">Select Category</option>
+            <option>Electronics</option>
+            <option>Documents</option>
+            <option>Bags</option>
+            <option>Jewellery</option>
+            <option>Clothing</option>
+            <option>Other</option>
+        </select>
+
+        <label>Description</label>
+        <textarea name="description"
+                  placeholder="Describe the lost item..." required></textarea>
+
+        <label>Lost Date</label>
+        <input type="date" name="lostDate" required>
+
+        <label>Lost Location</label>
+        <input type="text" name="location"
+               placeholder="Where did you lose the item?" required>
+
+        <label>Contact Number</label>
+        <input type="tel" name="contact"
+               placeholder="Enter your contact number" required>
+
+        <label>Upload Item Image (Optional)</label>
+        <input type="file" name="itemImage" accept="image/*">
+
+        <button type="submit">Submit Lost Item Report</button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

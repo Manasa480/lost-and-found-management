@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f4f1;
+            margin: 0;
+            padding: 25px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        h1 {
+            color: #075b2a;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 13px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background: #075b2a;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #f2f7f3;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #075b2a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Manage Users</h1>
+
+        <p>Total Registered Users: <strong><%= users.length %></strong></p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <% if (users.length > 0) { %>
+                    <% users.forEach(user => { %>
+                        <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.phone %></td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="4">No registered users found.</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+
+        <a href="/admin-dashboard">Back to Admin Dashboard</a>
+    </div>
+</body>
+</html>

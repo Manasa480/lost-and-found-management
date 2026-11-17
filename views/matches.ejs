@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matched Items - Lost & Found</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        nav {
+            background: #172554;
+            padding: 18px 7%;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1000px;
+            margin: 35px auto;
+        }
+
+        h1 {
+            color: #166534;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .card h2 {
+            color: #166534;
+        }
+
+        .match-label {
+            display: inline-block;
+            background: #dcfce7;
+            color: #166534;
+            padding: 7px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .empty {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 15px;
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/dashboard">← Back to Dashboard</a>
+    </nav>
+
+    <div class="container">
+
+        <h1>🤝 Matched Items</h1>
+
+        <p class="subtitle">
+            Possible matches between reported lost and found belongings.
+        </p>
+
+        <% if (matches.length === 0) { %>
+
+            <div class="empty">
+                <h2>No matching items found yet.</h2>
+                <p>Matches will appear when lost and found items have the same name and category.</p>
+            </div>
+
+        <% } else { %>
+
+            <% matches.forEach(match => { %>
+
+                <div class="card">
+
+                    <span class="match-label">Possible Match</span>
+
+                    <h2><%= match.lost_name %></h2>
+
+                    <p><strong>Category:</strong>
+                        <%= match.category %></p>
+
+                    <p><strong>Lost Location:</strong>
+                        <%= match.lost_location %></p>
+
+                    <p><strong>Lost Date:</strong>
+                        <%= match.lost_date %></p>
+
+                    <hr>
+
+                    <h3>Found Item Details</h3>
+
+                    <p><strong>Item:</strong>
+                        <%= match.found_name %></p>
+
+                    <p><strong>Found Location:</strong>
+                        <%= match.found_location %></p>
+
+                    <p><strong>Found Date:</strong>
+                        <%= match.found_date %></p>
+
+                    <p><strong>Contact:</strong>
+                        <%= match.found_contact %></p>
+
+                </div>
+
+            <% }); %>
+
+        <% } %>
+
+        <a class="back" href="/dashboard">Back to Dashboard</a>
+
+    </div>
+
+</body>
+</html>

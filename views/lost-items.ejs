@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Items - Lost and Found</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        header {
+            background: #172554;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: 35px auto;
+        }
+
+        h1 {
+            color: #172554;
+        }
+
+        .intro {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 22px;
+        }
+
+        .item-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px #00000010;
+        }
+
+        .item-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            background: #e2e8f0;
+        }
+
+        .item-content {
+            padding: 20px;
+        }
+
+        .item-content h2 {
+            color: #2457a6;
+            margin-top: 0;
+        }
+
+        .item-content p {
+            line-height: 1.5;
+            color: #475569;
+            overflow-wrap: anywhere;
+        }
+
+        .empty {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+        }
+
+        @media(max-width: 600px) {
+            header {
+                gap: 12px;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h2>🔍 Lost & Found</h2>
+    <a href="/dashboard">Back to Dashboard</a>
+</header>
+
+<div class="container">
+
+    <h1>Reported Lost Items</h1>
+    <p class="intro">
+        Browse the items reported lost by users.
+    </p>
+
+    <% if (items.length === 0) { %>
+
+        <div class="empty">
+            <h2>No lost items reported yet.</h2>
+            <p>Be the first to report a lost item.</p>
+            <a href="/report-lost">Report Lost Item</a>
+        </div>
+
+    <% } else { %>
+
+        <div class="items">
+
+            <% items.forEach(item => { %>
+
+                <div class="item-card">
+
+                    <% if (item.image) { %>
+                        <img
+                            src="/uploads/<%= encodeURIComponent(item.image) %>"
+                            alt="Photo of <%= item.item_name %>"
+                        >
+                    <% } %>
+
+                    <div class="item-content">
+
+                        <h2><%= item.item_name %></h2>
+
+                        <p><strong>Category:</strong>
+                            <%= item.category %>
+                        </p>
+
+                        <p><strong>Description:</strong>
+                            <%= item.description %>
+                        </p>
+
+                        <p><strong>Lost Date:</strong>
+                            <%= item.lost_date %>
+                        </p>
+
+                        <p><strong>Location:</strong>
+                            <%= item.location %>
+                        </p>
+
+                        <p><strong>Contact:</strong>
+                            <%= item.contact %>
+                        </p>
+
+                    </div>
+                </div>
+
+            <% }); %>
+
+        </div>
+
+    <% } %>
+
+</div>
+
+<div class="footer">
+    © 2026 Lost and Found Management System
+</div>
+
+</body>
+</html>

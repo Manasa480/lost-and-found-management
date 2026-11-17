@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Items - Lost & Found</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        nav {
+            background: #172554;
+            color: white;
+            padding: 18px 7%;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 88%;
+            max-width: 1000px;
+            margin: 35px auto;
+        }
+
+        h1 {
+            color: #1e40af;
+        }
+
+        .search-box, .card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #cbd5e1;
+            border-radius: 7px;
+        }
+
+        button {
+            background: #2563eb;
+            color: white;
+            padding: 12px 22px;
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .card h2 {
+            color: #166534;
+        }
+
+        .back {
+            color: #2563eb;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/dashboard">← Back to Dashboard</a>
+    </nav>
+
+    <div class="container">
+
+        <h1>🔎 Search Lost and Found Items</h1>
+        <p>Find items using their name or category.</p>
+
+        <form class="search-box" action="/search" method="GET">
+
+            <label>Item Name</label>
+            <input type="text" name="keyword"
+                   placeholder="Example: Mobile, Wallet, Bag"
+                   value="<%= keyword %>">
+
+            <label>Item Type</label>
+            <select name="type">
+                <option value="all" <%= type === 'all' ? 'selected' : '' %>>All Items</option>
+                <option value="lost" <%= type === 'lost' ? 'selected' : '' %>>Lost Items</option>
+                <option value="found" <%= type === 'found' ? 'selected' : '' %>>Found Items</option>
+            </select>
+
+            <button type="submit">Search Items</button>
+
+        </form>
+
+        <h2>Search Results</h2>
+
+        <% if (items.length === 0) { %>
+
+            <div class="card">
+                <p>No matching items found. Try another search.</p>
+            </div>
+
+        <% } else { %>
+
+            <% items.forEach(item => { %>
+
+                <div class="card">
+
+                    <h2><%= item.item_name %></h2>
+
+                    <p><strong>Type:</strong> <%= item.item_type %></p>
+                    <p><strong>Category:</strong> <%= item.category %></p>
+                    <p><strong>Description:</strong> <%= item.description %></p>
+                    <p><strong>Date:</strong> <%= item.item_date %></p>
+                    <p><strong>Location:</strong> <%= item.location %></p>
+                    <p><strong>Contact:</strong> <%= item.contact %></p>
+
+                    <% if (item.image) { %>
+                        <img src="/uploads/<%= encodeURIComponent(item.image) %>"
+                             alt="Item image"
+                             style="width:200px; max-width:100%; margin-top:10px;">
+                    <% } %>
+
+                </div>
+
+            <% }); %>
+
+        <% } %>
+
+        <a class="back" href="/dashboard">Back to Dashboard</a>
+
+    </div>
+
+</body>
+</html>

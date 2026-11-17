@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Found Items - Lost & Found</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        nav {
+            background: #166534;
+            color: white;
+            padding: 18px 7%;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .container {
+            width: 88%;
+            margin: 35px auto;
+        }
+
+        h1 {
+            color: #166534;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            color: #166534;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            margin: 9px 0;
+            line-height: 1.5;
+            overflow-wrap: anywhere;
+        }
+
+        .empty {
+            background: white;
+            padding: 35px;
+            border-radius: 12px;
+            text-align: center;
+            color: #64748b;
+        }
+
+        .back {
+            display: inline-block;
+            margin-top: 25px;
+            color: #166534;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <a href="/dashboard">← Back to Dashboard</a>
+    </nav>
+
+    <div class="container">
+
+        <h1>🟢 Found Items</h1>
+        <p class="subtitle">
+            Browse items reported as found by users.
+        </p>
+
+        <% if (items.length === 0) { %>
+
+            <div class="empty">
+                <h2>No found items available yet.</h2>
+                <p>Be the first to report a found item!</p>
+            </div>
+
+        <% } else { %>
+
+            <div class="items">
+
+                <% items.forEach(item => { %>
+
+                    <div class="card">
+
+                        <% if (item.image) { %>
+                            <img
+                                src="/uploads/<%= encodeURIComponent(item.image) %>"
+                                alt="Found item">
+                        <% } %>
+
+                        <h2><%= item.item_name %></h2>
+
+                        <p><strong>Category:</strong>
+                            <%= item.category %></p>
+
+                        <p><strong>Description:</strong>
+                            <%= item.description %></p>
+
+                        <p><strong>Date Found:</strong>
+                            <%= item.found_date %></p>
+
+                        <p><strong>Location:</strong>
+                            <%= item.location %></p>
+
+                        <p><strong>Contact:</strong>
+                            <%= item.contact %></p>
+
+                    </div>
+
+                <% }); %>
+
+            </div>
+
+        <% } %>
+
+        <a class="back" href="/dashboard">Back to Dashboard</a>
+
+    </div>
+
+</body>
+</html>

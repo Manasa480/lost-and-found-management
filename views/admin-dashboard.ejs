@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Lost and Found</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        nav {
+            background: #172554;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h2 {
+            font-size: 23px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        .container {
+            width: 86%;
+            margin: 40px auto;
+        }
+
+        .welcome {
+            background: linear-gradient(120deg, #2563eb, #4f46e5);
+            color: white;
+            padding: 35px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+        }
+
+        .welcome h1 {
+            margin-bottom: 12px;
+        }
+
+        .welcome p {
+            line-height: 1.6;
+        }
+
+        .section-title {
+            margin: 25px 0 18px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: white;
+            padding: 28px;
+            border-radius: 13px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+        }
+
+        .card h2 {
+            font-size: 22px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            display: inline-block;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            padding: 11px 18px;
+            border-radius: 7px;
+        }
+
+        .card a:hover {
+            background: #1d4ed8;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 25px;
+            color: #64748b;
+        }
+
+        @media(max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav a {
+                margin: 0 8px;
+            }
+
+            .container {
+                width: 92%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <h2>🔍 Lost & Found Admin</h2>
+
+        <div>
+            <a href="/">Home</a>
+            <a href="/admin-logout">Logout</a>
+        </div>
+    </nav>
+
+    <div class="container">
+
+        <div class="welcome">
+            <h1>Welcome, Admin! 👋</h1>
+            <p>
+                Manage registered users and monitor lost and found
+                reports in the system.
+            </p>
+        </div>
+
+        <h2 class="section-title">Dashboard Statistics</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h2>👥 Total Users</h2>
+                <p>Registered users: <strong><%= totalUsers %></strong></p>
+            </div>
+
+            <div class="card">
+                <h2>🔴 Lost Items</h2>
+                <p>Total lost reports: <strong><%= totalLost %></strong></p>
+            </div>
+
+            <div class="card">
+                <h2>🟢 Found Items</h2>
+                <p>Total found reports: <strong><%= totalFound %></strong></p>
+            </div>
+
+        </div>
+
+        <h2 class="section-title">Admin Management</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h2>👥 Manage Users</h2>
+                <p>View all registered users and their information.</p>
+                <a href="/admin-users">Manage Users</a>
+            </div>
+
+            <div class="card">
+                <h2>🔴 Manage Lost Items</h2>
+                <p>View and manage reported lost belongings.</p>
+                <a href="/admin-lost-items">Manage Lost Items</a>
+            </div>
+
+            <div class="card">
+                <h2>🟢 Manage Found Items</h2>
+                <p>View and manage reported found belongings.</p>
+                <a href="/admin-found-items">Manage Found Items</a>
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer">
+        <p>© 2026 Lost and Found Management System</p>
+    </div>
+
+</body>
+</html>
