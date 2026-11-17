@@ -1,0 +1,209 @@
+
+# 🔍 Lost and Found Management System
+
+A web-based Lost and Found Management System developed using Node.js, Express.js and SQLite. The application helps users report lost and found items, search for missing belongings, and identify possible matches through a centralized platform.
+
+## 📌 Project Overview
+
+The Lost and Found Management System provides a simple and efficient way to manage lost and found belongings.
+
+Users can register, log in, report lost or found items, upload item images, and search for reported belongings. The system also provides an admin dashboard to manage users and item reports.
+
+## 🎯 Objectives
+
+- To provide a centralized platform for lost and found items.
+- To make reporting lost and found belongings easier.
+- To help users search for missing items.
+- To identify matching lost and found items.
+- To provide secure user authentication.
+- To allow administrators to manage users and item reports.
+
+## ✨ Features
+
+### User Features
+- User Registration
+- Secure User Login
+- User Dashboard
+- Report Lost Items
+- Report Found Items
+- Upload Item Images
+- View Lost Items
+- View Found Items
+- Search Items by Name and Category
+- Automatic Lost and Found Item Matching
+- User Logout
+
+### Admin Features
+- Admin Login
+- Admin Dashboard
+- View Total Registered Users
+- View Total Lost Items
+- View Total Found Items
+- Manage Registered Users
+- View Lost Item Reports
+- View Found Item Reports
+- Delete Lost and Found Item Reports
+- Admin Logout
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| HTML | Web page structure |
+| CSS | Website styling |
+| JavaScript | Client-side functionality |
+| Node.js | Backend development |
+| Express.js | Web application framework |
+| EJS | Dynamic web pages |
+| SQLite | Database management |
+| Multer | Image uploading |
+| Bcrypt | Password hashing |
+| Express Session | User session management |
+
+## 📂 Project Structure
+
+```text
+lost-and-found-management/
+│
+├── views/
+│   ├── index.ejs
+│   ├── login.ejs
+│   ├── register.ejs
+│   ├── dashboard.ejs
+│   ├── report-lost.ejs
+│   ├── report-found.ejs
+│   ├── lost-items.ejs
+│   ├── view-found.ejs
+│   ├── search-items.ejs
+│   ├── matches.ejs
+│   ├── admin-login.ejs
+│   ├── admin-dashboard.ejs
+│   ├── admin-users.ejs
+│   ├── admin-lost-items.ejs
+│   └── admin-found-items.ejs
+│
+├── uploads/
+│
+├── database.db
+├── server.js
+├── make-admin.js
+├── package.json
+├── package-lock.json
+└── README.md
+```
+
+## 🗄️ Database
+
+The project uses SQLite as its database.
+
+The database contains the following main tables:
+
+**1. Users**
+- User ID
+- Name
+- Email
+- Phone
+- Password
+- Role
+
+**2. Lost Items**
+- Item ID
+- User ID
+- Item Name
+- Category
+- Description
+- Lost Date
+- Location
+- Contact
+- Image
+
+**3. Found Items**
+- Item ID
+- User ID
+- Item Name
+- Category
+- Description
+- Found Date
+- Location
+- Contact
+- Image
+
+## ⚙️ Installation and Setup
+
+### Prerequisites
+
+Install the following software:
+
+- Node.js
+- npm
+- Visual Studio Code
+- Web Browser
+
+### Step 1: Clone the Repository
+
+```bash
+git clone https://github.com/Manasa480/lost-and-found-management.git
+```
+
+### Step 2: Open the Project Folder
+
+```bash
+cd lost-and-found-management
+```
+
+### Step 3: Install Dependencies
+
+```bash
+npm install
+```
+
+### Step 4: Start the Application
+
+```bash
+node server.js
+```
+
+### Step 5: Open in Browser
+
+Visit:
+
+```text
+http://localhost:3000
+```
+
+The SQLite database tables are initialized automatically when the application starts.
+
+## 🔄 System Modules
+
+1. User Registration and Login Module
+2. User Dashboard Module
+3. Lost Item Reporting Module
+4. Found Item Reporting Module
+5. Item Searching Module
+6. Automatic Item Matching Module
+7. Admin Management Module
+
+## 🔐 Security
+
+- Passwords are hashed using Bcrypt.
+- Session-based authentication is implemented.
+- Admin routes are protected with role-based access checks.
+- Image uploads are restricted to image files with a 5 MB size limit.
+
+## 🚀 Future Enhancements
+
+- Email notifications for matching items.
+- Advanced search filters.
+- Location-based item searching.
+- Real-time notifications.
+- Improved item matching using image recognition.
+
+## 👩‍💻 Developer
+
+**Manasa**
+
+GitHub: https://github.com/Manasa480
+
+## 📜 License
+
+This project is developed for academic and educational purposes.
